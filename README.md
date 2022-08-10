@@ -15,3 +15,6 @@
   userB messageCount = 1
   userC messageCount = 2
   The top two talkers (n = 2) would be [userA, userC]
+
+Test Class which has the main method: TalkerGeneratorTest
+Computation Class called from main method: TalkerGenerator
