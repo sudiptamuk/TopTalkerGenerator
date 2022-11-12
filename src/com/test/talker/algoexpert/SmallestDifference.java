@@ -8,48 +8,55 @@ public class SmallestDifference {
 
     public static void main(String[] args) {
 
-        int[] inputArray = {12, 3, 1, 2, -6, 5, -8, 6};
+        //int[] arrayOne = {10, 1000, 9124, 2142, 59, 24, 596, 591, 124, -123};
+        //int[] arrayTwo = {-1441, -124, -25, 1014, 1500, 660, 410, 245, 530};
 
-        List<Integer[]> outputArray = threeNumberSum(inputArray, 0);
+        int[] arrayOne = {-1, 5, 10, 20, 28, 3};
+        int[] arrayTwo = {26, 134, 135, 15, 17};
+
+        int[] outputArray = smallestDifference(arrayOne, arrayTwo);
 
         System.out.println("Output");
-        outputArray.forEach(a -> {
-            System.out.println(Arrays.toString(a));
-        });
+        System.out.println(Arrays.toString(outputArray));
     }
 
-    public static List<Integer[]> threeNumberSum(int[] array, int targetSum) {
-        // Write your code here.
-        // [12, 3, 1, 2, -6, 5, -8, 6]
-        // targetgetsum = 0
-        // [-8, -6, 1, 2, 3, 5, 6, 12]
-        // [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
+    public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
+        //[-1, 5, 10, 20, 28, 3]
+        //[26, 134, 135, 15, 17]
 
-        List<Integer[]> outputList = new ArrayList<>();
+        //[-1, 3, 5, 10, 20, 28]
+        //[15, 17, 26, 134, 135]
 
-        Arrays.sort(array);
-        int len = array.length;
-        if(array.length > 2) {
-            for (int i = 0; i < len; i++) {
-                for (int j = i + 1; j < len; j++) {
-                    for (int k = j + 1; k < len; k++) {
-                        int firstElement = array[i];
-                        int secondElement = array[j];
-                        int sum = firstElement + secondElement;
-                        int nextElement = array[k];
-                        if (nextElement == (targetSum - sum)) {
-                            Integer[] anItem = {firstElement, secondElement, nextElement};
-                            outputList.add(anItem);
-                            System.out.println(Arrays.toString(anItem));
-                        } else if (nextElement > (targetSum - sum)) {
-                            break;
-                        }
-                    }
+        int[] outputArray = new int[2];
+        Arrays.sort(arrayOne);
+        Arrays.sort(arrayTwo);
+        System.out.println("arrayOne[0]:" + arrayOne[0]);
+        System.out.println("arrayTwo[0]:" + arrayTwo[0]);
+
+        int lowestDiff = Math.abs(arrayOne[0] - arrayTwo[0]);
+        System.out.println("First lowestDiff:" + lowestDiff);
+
+        for(int i = 0; i< arrayTwo.length; i++) {
+            int lastDiff = 0;
+            for(int j = 0; j< arrayOne.length; j++) {
+                int arrOneItem = arrayOne[j];
+                int arrTwoItem = arrayTwo[i];
+                System.out.println("arrOneItem:" + arrOneItem + ";arrTwoItem:" + arrTwoItem);
+                int tempDiff = Math.abs(arrOneItem - arrTwoItem);
+                if(tempDiff <= lastDiff) {
+                    lowestDiff = tempDiff;
+                    outputArray[0] = arrOneItem;
+                    outputArray[1] = arrTwoItem;
+                    System.out.println("lowestDiff:" + lowestDiff + ";tempDiff:" + tempDiff);
+                    lastDiff = tempDiff;
+                }else{
+                    break;
                 }
             }
         }
 
 
-        return outputList;
+
+        return outputArray;
     }
 }

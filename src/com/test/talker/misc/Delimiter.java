@@ -1,0 +1,24 @@
+package com.test.talker.misc;
+
+public class Delimiter {
+
+    private static final String DELIM_PIPE = "\\|";
+
+    public static void main(String[] args) {
+
+        String  headerRow = "ACCOUNT_NUMBER|TRADE_DATE|TRADE_EXECUTION_TIME|SETTLEMENT_DATE|CUSIP|" +
+                "SYMBOL|SECURITY_DESCRIPTION|ASSET_TYPE|TRADE_PRICE|TRADE_QUANTITY|PRINCIPAL_AMOUNT|" +
+                "COMMISSION_AMOUNT|MARKUP_MARKDOWN|SALES_CONCESSION_CREDIT|OTHER_FEES|TRADE_CAPACITY|" +
+                "BUY_SELL_FLAG|SOLICITATION_INDICATOR|CANCEL_INDICATOR|REBILL_INDICATOR|TRADE_IDENTIFIER|" +
+                "REP_IDENTIFIER|BRANCH_IDENTIFIER|CURRENCY_TYPE_CODE|TRADE_AS_OF_DATE|EXCHANGE_IDENTIFIER|" +
+                "CUSTOMER_TYPE_DESCRIPTION|ASSET_SUB_TYPE|ACCRUED_INTEREST|NET_AMOUNT|OFFSET_ACCOUNT_NUMBER|" +
+                "REPORTING_IDENTIFIER|SALES_FEES|SECURITY_IDENTIFIER|OPTIONS_SYMBOLOGY_IDENTIFIER|" +
+                "CASH_MARGIN_INDICATOR|ORDER_TYPE_CODE|ISIN_IDENTIFIER|SEDOL_IDENTIFIER";
+
+
+        String[] headerValuesArray = headerRow.split(DELIM_PIPE);
+        for (String s : headerValuesArray) {
+            System.out.print("headerValuesArray:" + s + "\t");
+        }
+    }
+}
